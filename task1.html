@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marksheet</title>
+  <style>
+    body{
+      background-color: antiquewhite;
+    }
+    h1{
+      font-style: oblique;
+      color: aqua;
+    }
+    .container{
+      align-content: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Marksheet</h1>
+    
+      <label for="subject1" style="color: bisque;">Subject 1:</label>
+      <input type="number" id="subject1">
+    </div>
+    
+      <label for="subject2" style="color: burlywood;">Subject 2:</label>
+      <input type="number" id="subject2">
+    </div>
+    <div class="input-container">
+      <label for="subject3" style="color: red;">Subject 3:</label>
+      <input type="number" id="subject3">
+    </div>
+   
+      <label for="subject4" style="color: cadetblue;">Subject 4:</label>
+      <input type="number" id="subject4" >
+    </div>
+    <div class="input-container">
+      <label for="subject5" style="color: tan;">Subject 5:</label>
+      <input type="number" id="subject5">
+    </div>
+    <button onclick="calculateMarks()">Calculate</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function calculateMarks() {
+      const subject1 = parseFloat(document.getElementById('subject1').value);
+      const subject2 = parseFloat(document.getElementById('subject2').value);
+      const subject3 = parseFloat(document.getElementById('subject3').value);
+      const subject4 = parseFloat(document.getElementById('subject4').value);
+      const subject5 = parseFloat(document.getElementById('subject5').value);
+
+      const totalMarks = subject1 + subject2 + subject3 + subject4 + subject5;
+      const percentage = (totalMarks / 500) * 100;
+      let grade = '';
+
+      if (percentage >= 90 && percentage <= 100) {
+        grade = 'A++';
+      } else if (percentage >= 80 && percentage>90) {
+        grade = 'A+';
+      } else if (percentage >= 70 && percentage<80) {
+        grade = 'A';
+      } else if (percentage >= 60 && percentage<70) {
+        grade = 'B';
+      } else if (percentage >= 50 && percentage<60) {
+        grade = 'C';
+      }
+      else if(percentage>= 40 && percentage <50) {
+        grade = 'D'
+
+      }
+       else {
+        grade = 'F';
+      }
+
+      const resultContainer = document.getElementById('result');
+      resultContainer.innerHTML = `
+        <p>Total Marks: ${totalMarks}</p>
+        <p>Percentage: ${percentage.toFixed(2)}%</p>
+        <p>Grade: ${grade}</p>
+      `;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myform" onsubmit="return validationform()" class="form-container">
+        <h1>Registration Form</h1>
+    <label>First Name</label>
+    <input type="text" id="firstname">
+    <span id="firstnameError" class="error"></span>
+    <br>
+    <br>
+    
+    
+    
+
+    <label>Last name</label>
+    <input type="text" id="lastname">
+    <span id="lastnameError" class="error"></span>
+    
+
+    <br>
+    <br>
+
+
+    <label>Email</label>
+    <input type="email" id="email">
+    <span id="emailError" class="error"></span>
+
+    <input type="submit" value="Login">
+    </form>
+    <script>
+        var firstname = document.getElementById("firstname").value;
+    var lastname = document.getElementById("lastname").value;
+    var email = document.getElementById("email").value;
+
+    var firstnameError = document.getElementById("firstnameError");
+    var lastnameError = document.getElementById("lastnameError");
+    var emailError = document.getElementById("emailError");
+
+
+    firstnameError.innerHTML = "";
+    lastnameError.innerHTML = "";
+    emailError.innerHTML = "";
+
+    if(firstname === "") {
+        firstnameError.innerHTML ="name is required";
+        return false
+    }
+
+
+    if(lastname === "") {
+        lastnameError.innerHTML ="last name is required";
+        return false
+    }
+
+    var emailpattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if(!emailpattern.test(email)) {
+        emailError.innerHTML ="email is required";
+    }
+
+    </script>
+    
+</body>
+</html>
